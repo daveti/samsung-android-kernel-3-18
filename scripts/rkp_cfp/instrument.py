@@ -86,7 +86,7 @@ def _zbits(x):
 # Use CROSS_COMPILE provided to kernel make command.
 devnull = open('/dev/null', 'w')
 def which(executable):
-    return subprocess.Popen(['which', executable], stdout=devnull).wait() == 0
+    return subprocess.Popen(['which', executable], stdout=devnull, stderr=devnull).wait() == 0
 def guess_cross_compile(order):
     for prefix in order:
         if which("{prefix}gcc".format(**locals())):
